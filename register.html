@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp Form</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #a8e063, #56ab2f);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .checkbox input {
+            margin-right: 10px;
+        }
+
+        .signup-btn {
+            background-color: #66bb6a;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .signup-btn:hover {
+            background-color: #4caf50;
+        }
+
+        .bottom-text {
+            margin-top: 20px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .bottom-text a {
+            font-weight: bold;
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>SignUp Form</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+            <div class="checkbox">
+                <input type="checkbox" required>
+                <label>I Agree To The Terms & Conditions</label>
+            </div>
+
+            <button type="submit" class="signup-btn">SIGN UP</button>
+        </form>
+
+        <div class="bottom-text">
+            Don’t have an Account? <a href="{% url 'register' %}">Login Now!</a><br>
+            Go to HOME page <a href="{% url 'register' %}">HOME!</a>
+        </div>
+    </div>
+</body>
+</html>

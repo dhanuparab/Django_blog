@@ -1,0 +1,27 @@
+<form method="POST">
+    {% csrf_token %}
+    <h2>Pay ${{ price }}</h2>
+    <button id="rzp-button">Pay with Razorpay</button>
+  </form>
+  
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+  var options = {
+      "key": "rzp_test_n0lhpmrEfeIhGJ",
+      "amount": "{{ price }}00", 
+      "currency": "USD",
+      "name": "MyBlog",
+      "description": "Subscription Payment",
+      "handler": function (response){
+          window.location.href = "{% url 'payment_success' %}";
+      }
+  };
+  var rzp = new Razorpay(options);
+  document.getElementById('rzp-button').onclick = function(e){
+      rzp.open();
+      e.preventDefault();
+  }
+  </script>
+  
+
+  

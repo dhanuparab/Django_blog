@@ -1,0 +1,14 @@
+<nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <div class="text-xl font-bold">MyBlog</div>
+    <ul class="flex space-x-4">
+        <li><a href="/" class="hover:underline">Home</a></li>
+        <li><a href="/subscription/" class="hover:underline">Subscription</a></li>
+        <li><a href="/contact/" class="hover:underline">Contact</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="/logout/" class="hover:underline">Logout</a></li>
+        {% else %}
+            <li><a href="/login/" class="hover:underline">Login</a></li>
+            <li><a href="/signup/" class="hover:underline">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</nav>

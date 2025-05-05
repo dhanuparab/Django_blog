@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <style>
+        body {
+            background: linear-gradient(#a8e063, #56ab2f);
+            font-family: Arial;
+        }
+        .form-box {
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        input[type=text], input[type=password] {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+        }
+        input[type=checkbox] {
+            margin: 10px;
+        }
+        .login-btn {
+            width: 90%;
+            background-color: #6fbf73;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .login-btn:hover {
+            background-color: #5fae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Login Form</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <label>
+                <input type="checkbox" name="terms"> I Agree To The Terms & Conditions
+            </label><br>
+            <input type="submit" class="login-btn" value="Login"><br><br>
+            <p>Already have an Account? <a href="{% url 'register' %}">Register Now!</a></p>
+        </form>
+        {% for message in messages %}
+            <p style="color: yellow;">{{ message }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
